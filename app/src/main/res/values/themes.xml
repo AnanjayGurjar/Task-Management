@@ -22,4 +22,14 @@
     <style name="Theme.TaskManagement.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.TaskManagement.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="Header" parent="TextAppearance.AppCompat" >
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="HeaderSmall" parent="@style/Header" >
+        <item name="android:textStyle">italic</item>
+        <item name="android:textColor">@color/gray</item>
+    </style>
 </resources>
