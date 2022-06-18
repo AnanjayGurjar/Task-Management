@@ -1,6 +1,6 @@
 package ai.ineuron.taskmanagement.modals
 
-data class Person(
+data class User(
     var name: String,
     var contact: String,
     var photo: String,
