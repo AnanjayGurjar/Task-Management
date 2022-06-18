@@ -2,7 +2,7 @@ package ai.ineuron.taskmanagement.modals
 
 data class Task(
     var taskId: String,
-    var isCompleted: Boolean = true,
+    var isCompleted: Boolean = false,
     var title: String? = null,
     var description: String? = null,
     var createdBy: User,

@@ -2,13 +2,21 @@ package ai.ineuron.taskmanagement.ui.viewmodel
 
 import ai.ineuron.taskmanagement.modals.User
 import ai.ineuron.taskmanagement.modals.Task
+import ai.ineuron.taskmanagement.utils.AppConstants
 import ai.ineuron.taskmanagement.utils.AppConstants.Companion.TASK_COLLECTION
 import ai.ineuron.taskmanagement.utils.AppConstants.Companion.USER_COLLECTION
+
+import ai.ineuron.taskmanagement.utilshy.NetworkResponse
 import android.app.Application
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Build
+import android.provider.MediaStore
 import android.util.Log
+import android.widget.Toast
 import androidx.annotation.RequiresApi
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -18,7 +26,11 @@ import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import kotlinx.coroutines.launch
 import com.google.android.gms.tasks.Continuation
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.UploadTask
+import java.io.File
+import java.io.IOException
 
 private const val TAG = "AppViewModel"
 class AppViewModel(application: Application) : AndroidViewModel(application) {
@@ -34,7 +46,10 @@ class AppViewModel(application: Application) : AndroidViewModel(application) {
     var assignedTasksToUser = MutableLiveData<List<Task>>()
     private val _assignedTasksToUser = ArrayList<Task>()
 
-   
+    var userResponse: MutableLiveData<NetworkResponse<User>> = MutableLiveData()
+    var taskResponse: MutableLiveData<NetworkResponse<Task>> = MutableLiveData()
+
+    private lateinit var storageReference: StorageReference
 
     fun pushUserToDb(user: User, collectionName: String = USER_COLLECTION){
         viewModelScope.launch {
@@ -51,6 +66,9 @@ class AppViewModel(application: Application) : AndroidViewModel(application) {
 
     @RequiresApi(Build.VERSION_CODES.P)
     fun getAllUsers(collectionName: String = USER_COLLECTION){
+
+        userResponse.value = NetworkResponse.Loading()
+
         viewModelScope.launch {
             db.collection(collectionName)
                 .get()
@@ -59,10 +77,12 @@ class AppViewModel(application: Application) : AndroidViewModel(application) {
                         val user = document.toObject(User::class.java)
                         _allUsers.add(user)
                     }
+                    userResponse.value = NetworkResponse.Success()
                     allUsers.postValue(_allUsers)
                 }
                 .addOnFailureListener { exception ->
                     Log.d(TAG, "Error getting documents: ", exception)
+                    userResponse.value = NetworkResponse.Failure(exception.message.toString())
                 }
         }
     }
@@ -81,6 +101,8 @@ class AppViewModel(application: Application) : AndroidViewModel(application) {
     }
     
     fun getAllTasks(collectionName: String = TASK_COLLECTION){
+
+        taskResponse.value = NetworkResponse.Loading()
         viewModelScope.launch {
             db.collection(collectionName)
                 .get()
@@ -89,12 +111,33 @@ class AppViewModel(application: Application) : AndroidViewModel(application) {
                         val user = document.toObject(Task::class.java)
                         _allTasks.add(user)
                     }
+                    taskResponse.value = NetworkResponse.Success()
                     allTasks.postValue(_allTasks)
                 }
                 .addOnFailureListener { exception ->
                     Log.d(TAG, "Error getting documents: ", exception)
+                    taskResponse.value = NetworkResponse.Failure(exception.message.toString())
                 }
         }
+    }
+
+    fun getuser(user: FirebaseUser?) : User? {
+        val id = user?.uid
+        var user : User? = null
+        db.collection(AppConstants.USER_COLLECTION)
+            .whereEqualTo("userId", id)
+            .get()
+            .addOnSuccessListener { users ->
+                for (myUser in users){
+                    user = myUser.toObject(User::class.java)
+                }
+                userResponse.value = NetworkResponse.Success()
+            }
+            .addOnFailureListener { exception ->
+                Log.w(TAG, "Error getting documents: ", exception)
+                userResponse.value = NetworkResponse.Failure(exception.message.toString())
+            }
+        return user
     }
 
     fun addNewUserToTask(task: Task, userToAdd: User, collectionName: String = TASK_COLLECTION){
@@ -124,9 +167,11 @@ class AppViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     fun getTasksAssignedToUser(user: User){
+        userResponse.value = NetworkResponse.Loading()
 
         //TODO check if the user has assignedTasks locally or can call it there itself
         var taskIds = user.assignedTasks
+
         viewModelScope.launch {
             for (id in taskIds){
                 db.collection(TASK_COLLECTION)
@@ -138,24 +183,28 @@ class AppViewModel(application: Application) : AndroidViewModel(application) {
                             val task: Task = document.toObject(Task::class.java)
                             _assignedTasksToUser.add(task)
                         }
+                        userResponse.value = NetworkResponse.Success()
                     }
                     .addOnFailureListener { exception ->
                         Log.w(TAG, "Error getting documents: ", exception)
+                        userResponse.value = NetworkResponse.Failure(exception.message.toString())
                     }
             }
             assignedTasksToUser.postValue(_assignedTasksToUser)
         }
     }
 
-    private fun uploadImages( fileBytes: ByteArray,  currentUser: User){
+
+
+    fun uploadImages( fileBytes: ByteArray,  currentUser: User){
         var mStorageReference = FirebaseStorage.getInstance().reference
-        val fileToUpload = mStorageReference.child("$USER_COLLECTION/${currentUser.userId}/")
+        val fileToUpload = mStorageReference.child("$USER_COLLECTION/${currentUser.userId}/${currentUser.name}.jpg")
         fileToUpload.putBytes(fileBytes)
             .addOnSuccessListener {
 
             }
             .addOnFailureListener {
-                Log.e(TAG, "uploadImages: image couldnot be uploaded", )
+                Log.e(TAG, "uploadImages: image couldnot be uploaded")
             }
             .addOnCompleteListener {
             }
@@ -186,6 +235,52 @@ class AppViewModel(application: Application) : AndroidViewModel(application) {
 //            }
 //    }
 
+    fun getImageBitmap (currentUser: User) : Bitmap? {
+        userResponse.value = NetworkResponse.Loading()
+        var bitmapImage : Bitmap? = null
+        storageReference = FirebaseStorage.getInstance().getReference("$USER_COLLECTION/${currentUser.userId}/${currentUser.name}.jpg")
+        try {
+            val localFile: File = File.createTempFile("tempfile", ".jpg")
+            storageReference.getFile(localFile)
+                .addOnSuccessListener {
+                    bitmapImage = BitmapFactory.decodeFile(localFile.absolutePath)
+                    //TODO set image as binding.id.setImageBitmap+
+                    userResponse.value = NetworkResponse.Success()
+                }
+                .addOnFailureListener{
+//                    Toast.makeText(requireContext(), )
+                    Log.d(TAG, "Image fetched failed: " + it.message.toString())
+                    userResponse.value = NetworkResponse.Failure(it.message.toString())
+
+                }
+        }catch(e : IOException){
+            e.printStackTrace()
+            Log.d(TAG, "io Exception occurred")
+        }
+        return bitmapImage
+    }
+
+    fun deleteTask(task : Task, collectionName: String = TASK_COLLECTION){
+        db.collection(collectionName).document(task.taskId)
+            .delete()
+            .addOnSuccessListener {
+                Log.d(TAG, "Task successfully deleted!")
+            }
+            .addOnFailureListener {
+                    e -> Log.w(TAG, "Error deleting document", e)
+            }
+    }
+
+    fun updateTaskStatus(task : Task, isCompleted : Boolean, collectionName: String = TASK_COLLECTION){
+        db.collection(collectionName).document(task.taskId)
+            .update("isCompleted", isCompleted)
+            .addOnSuccessListener {
+                Log.d(TAG, "Task ${task.title} is succesfully updated")
+            }
+            .addOnFailureListener {
+                    e -> Log.e(TAG, "Error updating task", e)
+            }
+    }
 
 
 }

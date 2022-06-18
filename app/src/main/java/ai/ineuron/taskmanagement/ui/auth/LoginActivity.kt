@@ -24,7 +24,7 @@ class LoginActivity : AppCompatActivity() {
                     MaterialAlertDialogBuilder(this).apply {
                         setMessage("We will be Verifying ${binding.etPhoneNumber.editText!!.text} , is it ok?")
                         setPositiveButton("OK"){_,_ ->
-                            val phoneNo = binding.etPhoneNumber.editText!!.text.toString()
+                            val phoneNo = "+91${binding.etPhoneNumber.editText!!.text}"
                             val intent = Intent( this@LoginActivity, OtpVerification::class.java)
                             intent.putExtra("PHONE", phoneNo)
                             startActivity(intent)
@@ -42,7 +42,6 @@ class LoginActivity : AppCompatActivity() {
                 }else{
                     Toast.makeText(this, "Invalid number, please try again", Toast.LENGTH_SHORT).show()
                 }
-
         }
 
 
