@@ -16,15 +16,15 @@
         android:theme="@style/Theme.TaskManagement"
         tools:targetApi="31">
         <activity
-            android:name=".auth.LoginActivity"
-            android:exported="false"
-            android:label="@string/title_activity_login"
-            android:theme="@style/Theme.TaskManagement.NoActionBar" />
-        <activity
-            android:name=".auth.SignupActivity"
+            android:name="ai.ineuron.taskmanagement.ui.auth.UserProfile"
             android:exported="false" />
+
         <activity
-            android:name=".MainActivity"
+            android:name="ai.ineuron.taskmanagement.ui.auth.OtpVerification"
+            android:exported="false" />
+
+        <activity
+            android:name="ai.ineuron.taskmanagement.ui.auth.Splash"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -42,6 +42,19 @@
             </intent-filter>
         </service>
 
+        <activity
+            android:name="ai.ineuron.taskmanagement.ui.auth.LoginActivity"
+            android:exported="false"
+            android:label="@string/title_activity_login"
+            android:theme="@style/Theme.TaskManagement.NoActionBar" />
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true" />
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>
