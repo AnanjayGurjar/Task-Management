@@ -1,4 +1,4 @@
-package ai.ineuron.taskmanagement.auth
+package ai.ineuron.taskmanagement.ui.auth
 
 import ai.ineuron.taskmanagement.R
 import android.content.Intent
@@ -7,7 +7,6 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.WindowManager
-import androidx.core.os.HandlerCompat.postDelayed
 
 class Splash : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

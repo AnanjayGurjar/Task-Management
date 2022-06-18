@@ -1,8 +1,6 @@
-package ai.ineuron.taskmanagement.auth
+package ai.ineuron.taskmanagement.ui.auth
 
-import ai.ineuron.taskmanagement.MainActivity
 import ai.ineuron.taskmanagement.R
-import ai.ineuron.taskmanagement.databinding.ActivityLoginBinding
 import ai.ineuron.taskmanagement.databinding.ActivityOtpVerificationBinding
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity

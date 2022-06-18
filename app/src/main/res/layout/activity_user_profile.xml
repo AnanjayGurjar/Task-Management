@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:layout_gravity="center"
     android:padding="@dimen/_30sdp"
-    tools:context=".auth.UserProfile">
+    tools:context=".ui.auth.UserProfile">
 
     <TextView
         android:layout_width="wrap_content"

@@ -17,8 +17,6 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import kotlinx.coroutines.launch
-import com.google.android.gms.tasks.Continuation
-import com.google.firebase.storage.UploadTask
 
 private const val TAG = "AppViewModel"
 class AppViewModel(application: Application) : AndroidViewModel(application) {
