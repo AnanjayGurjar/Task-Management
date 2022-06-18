@@ -84,8 +84,10 @@ class TaskFragment : Fragment() {
     }
 
     private fun setupWorker(hour: Int , min: Int) {
+
         val minutes = (hour*60 + min).toLong()
         Log.d(TAG, minutes.toString())
+
         val workerRequest = PeriodicWorkRequest.Builder(NotificationWorker::class.java, minutes, TimeUnit.SECONDS)
             .build()
         WorkManager.getInstance(requireContext()).enqueue(workerRequest)
