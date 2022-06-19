@@ -2,29 +2,78 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@drawable/fragment_background"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context=".BlankFragment">
 
+
+
   <com.google.android.material.appbar.MaterialToolbar
-      android:layout_width="match_parent"
-      android:layout_height="?attr/actionBarSize"
-      style="@style/Widget.MaterialComponents.Toolbar.Primary"
-      android:background="@color/check"
-     app:navigationIcon="@drawable/ic_baseline_menu_24"
-      app:title="Ineuron">
+  android:layout_width="match_parent"
+  android:layout_height="?attr/actionBarSize"
+  style="@style/Widget.MaterialComponents.Toolbar.Primary"
+  android:background="@color/check"
+  app:navigationIcon="@drawable/ic_baseline_menu_24"
+  app:title="Ineuron">
+  <LinearLayout
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+
+      android:layout_gravity="end">
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_baseline_settings_24"
+        android:layout_marginRight="@dimen/_25sdp"/>
+
+  </LinearLayout>
 
 
 
   </com.google.android.material.appbar.MaterialToolbar>
-  <LinearLayout
-      android:layout_width="match_parent"
+
+  <ImageView
+      android:layout_width="120dp"
+      android:layout_height="120dp"
+      android:layout_gravity="center"
+      android:src="@drawable/time1"/>
+
+  <TextView
+      android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:orientation="vertical"
-      android:padding="@dimen/_20sdp">
+      android:layout_marginTop="@dimen/_20sdp"
+      android:gravity="center"
+      android:layout_gravity="center"
+      android:textAlignment="center"
+      android:fontFamily="@font/arvo_bold"
+      android:text="Please Provide your name and an optional Profile Pic"
+      android:textColor="#4E4E4E"
+      android:textSize="12sp" >
+
+  </TextView>
+
+  <LinearLayout
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content"
+  android:orientation="vertical"
+  android:layout_marginTop="@dimen/_25sdp"
+  android:padding="@dimen/_20sdp">
 
 
+  <LinearLayout
+      android:layout_width="wrap_content"
+      android:layout_marginTop="@dimen/_10sdp"
+      android:layout_height="wrap_content"
+      android:layout_gravity="end">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/arvo_bold"
+        android:textColor="#0E1822"
+
+        android:text="Date: 19/06/2022"/>
 
 
   </LinearLayout>
@@ -32,29 +81,125 @@
 
 
 
+  </LinearLayout>
+  <LinearLayout
+  android:layout_width="match_parent"
+  android:layout_height="150dp"
+  android:layout_margin="@dimen/_15sdp"
+  android:gravity="center"
+  android:orientation="horizontal">
+
+
+  <com.google.android.material.button.MaterialButton
+      android:id="@+id/btnDeleteTask"
+      style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+      android:layout_width="wrap_content"
+      android:layout_gravity="center"
+      android:layout_height="wrap_content"
+      android:layout_marginRight="@dimen/_28sdp"
+      android:layout_marginTop="@dimen/_20sdp"
+      android:fontFamily="@font/arvo_bold"
+      app:strokeWidth="@dimen/_2sdp"
+      app:cornerRadius="@dimen/_25sdp"
+
+      android:text="Delete Task"
+      android:textSize="@dimen/_9sdp"
+      android:textColor="@color/check"
+      app:strokeColor="@color/check">
+
+  </com.google.android.material.button.MaterialButton>
+  <com.google.android.material.button.MaterialButton
+      android:id="@+id/btnMarkComplete"
+      style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+      android:layout_width="wrap_content"
+      android:layout_gravity="center"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="@dimen/_20sdp"
+      android:fontFamily="@font/arvo_bold"
+      app:strokeWidth="@dimen/_2sdp"
+      app:cornerRadius="@dimen/_25sdp"
+
+      android:text="Mark Complete"
+      android:textSize="@dimen/_9sdp"
+      android:textColor="@color/check"
+      app:strokeColor="@color/check">
+
+  </com.google.android.material.button.MaterialButton>
+
+  </LinearLayout>
+
+  <com.google.android.material.button.MaterialButton
+      android:id="@+id/reminderBtn"
+      style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+      android:layout_width="wrap_content"
+      android:layout_gravity="center"
+      android:layout_height="wrap_content"
+      android:fontFamily="@font/arvo_bold"
+      app:strokeWidth="@dimen/_2sdp"
+      app:cornerRadius="@dimen/_25sdp"
+
+      android:text="Set Reminder"
+      android:textSize="@dimen/_9sdp"
+      android:textColor="@color/check"
+      app:strokeColor="@color/check">
+
+  </com.google.android.material.button.MaterialButton>
+
+  <com.google.android.material.button.MaterialButton
+      android:id="@+id/addTaskBtn"
+      style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+      android:layout_width="wrap_content"
+      android:layout_gravity="center"
+      android:layout_marginTop="@dimen/_10sdp"
+      android:layout_height="wrap_content"
+      android:fontFamily="@font/arvo_bold"
+      app:strokeWidth="@dimen/_2sdp"
+      app:cornerRadius="@dimen/_25sdp"
+
+      android:text="Add Task"
+      android:textSize="@dimen/_9sdp"
+      android:textColor="@color/check"
+      app:strokeColor="@color/check">
+
+  </com.google.android.material.button.MaterialButton>
+
+
+
+
+
+
+
+
+
 
 </LinearLayout>
-<!--<LinearLayout-->
-<!--android:layout_width="wrap_content"-->
+
+<!--<EditText-->
+<!--android:layout_width="match_parent"-->
+<!--android:hint="Description"-->
 <!--android:layout_height="wrap_content"-->
-<!--android:orientation="horizontal"-->
-<!--android:layout_marginLeft="@dimen/_3sdp">-->
+<!--android:padding="@dimen/_10sdp"-->
+<!--android:drawableStart="@drawable/ic_baseline_border_color_24"-->
+<!--android:drawablePadding="16dp"-->
+<!--android:background="@drawable/edittext_background"-->
+<!--android:textSize="@dimen/_15sdp"-->
+<!--android:ems="10"-->
 
-<!--<ImageView-->
-<!--    android:layout_width="wrap_content"-->
-<!--    android:layout_height="wrap_content"-->
-<!--    android:src="@drawable/ic_baseline_list"-->
-<!--    android:layout_marginRight="@dimen/_10sdp"-->
+<!--android:textColor="#000"/>-->
+<!--<EditText-->
+<!--android:layout_width="match_parent"-->
+<!--android:layout_height="wrap_content"-->
+<!--android:padding="@dimen/_5sdp"-->
+<!--android:background="@drawable/edittext_background"-->
+<!--android:textSize="@dimen/_15sdp"-->
+<!--android:ems="10"-->
+<!--android:textColor="#000"/>-->
+<!--<EditText-->
+<!--android:layout_width="match_parent"-->
+<!--android:layout_height="wrap_content"-->
+<!--android:padding="@dimen/_5sdp"-->
+<!--android:background="@drawable/edittext_background"-->
+<!--android:textSize="@dimen/_15sdp"-->
+<!--android:ems="10"-->
+<!--android:textColor="#000"/>-->
 
-<!--    />-->
-
-
-<!--<TextView-->
-<!--    android:layout_width="wrap_content"-->
-<!--    android:layout_height="wrap_content"-->
-<!--    android:layout_gravity="center"-->
-<!--    android:fontFamily="@font/arvo_bold"-->
-<!--    android:text="Ineuron Hackathon"-->
-<!--    android:textColor="@color/check"-->
-<!--    android:textSize="18sp" />-->
-<!--</LinearLayout>-->

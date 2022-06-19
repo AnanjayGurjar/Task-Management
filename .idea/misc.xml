@@ -4,6 +4,8 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/dhruv/AndroidStudioProjects/Task-Management/app/src/main/res/drawable/backgroundbox.xml" value="0.161" />
+        <entry key="..\:/Users/dhruv/AndroidStudioProjects/Task-Management/app/src/main/res/drawable/edittext_background.xml" value="0.1745" />
+        <entry key="..\:/Users/dhruv/AndroidStudioProjects/Task-Management/app/src/main/res/drawable/fragment_background.xml" value="0.1745" />
         <entry key="..\:/Users/dhruv/AndroidStudioProjects/Task-Management/app/src/main/res/drawable/intro_btn.xml" value="0.1745" />
         <entry key="..\:/Users/dhruv/AndroidStudioProjects/Task-Management/app/src/main/res/drawable/intro_white.xml" value="0.1745" />
         <entry key="..\:/Users/dhruv/AndroidStudioProjects/Task-Management/app/src/main/res/layout/activity_intro.xml" value="0.25" />
