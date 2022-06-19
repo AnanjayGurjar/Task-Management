@@ -1,9 +1,9 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.TaskManagement" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="Theme.TaskManagement" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_500</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorPrimary">@color/check</item>
+        <item name="colorPrimaryVariant">@color/check</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
@@ -22,4 +22,14 @@
     <style name="Theme.TaskManagement.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.TaskManagement.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="Header" parent="TextAppearance.AppCompat" >
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="HeaderSmall" parent="@style/Header" >
+        <item name="android:textStyle">italic</item>
+        <item name="android:textColor">@color/gray</item>
+    </style>
 </resources>

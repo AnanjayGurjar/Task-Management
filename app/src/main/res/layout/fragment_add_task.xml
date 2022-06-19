@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".AddTaskFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="30dp"
+        android:paddingBottom="50dp"
+        android:orientation="vertical">
+
+        <TextView
+            fontPath="fonts/nunito_extra_bold.ttf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:text="Add a task"
+            android:textColor="@android:color/black"
+            android:textSize="22sp"
+            tools:ignore="MissingPrefix" />
+
+        <TextView
+            fontPath="fonts/nunito_light.ttf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:text="Fill the details below to add a task into your TASK-MANAGER"
+            android:textAlignment="center"
+            android:textColor="@android:color/black"
+            android:alpha="0.8"
+            android:textSize="18sp"
+            tools:ignore="MissingPrefix" />
+
+        <TextView
+            android:layout_marginLeft="3dp"
+            fontPath="fonts/nunito_light.ttf"
+            android:textColor="@color/check"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="Task title"
+            tools:ignore="MissingPrefix" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_5sdp"
+            android:background="@drawable/edittext_background"
+            android:textSize="@dimen/_15sdp"
+            android:ems="10"
+            android:textColor="#000"/>
+
+        <TextView
+            android:layout_marginLeft="3dp"
+            fontPath="fonts/nunito_light.ttf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/check"
+            android:layout_marginTop="30dp"
+            android:text="Task description"
+            tools:ignore="MissingPrefix" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_5sdp"
+            android:background="@drawable/edittext_background"
+            android:textSize="@dimen/_15sdp"
+            android:ems="10"
+            android:textColor="#000"/>
+
+        <TextView
+            android:layout_marginLeft="3dp"
+            fontPath="fonts/nunito_light.ttf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/check"
+            android:layout_marginTop="30dp"
+            android:text="Task date"
+            tools:ignore="MissingPrefix" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_5sdp"
+            android:background="@drawable/edittext_background"
+            android:textSize="@dimen/_15sdp"
+            android:ems="10"
+            android:textColor="#000"/>
+
+        <TextView
+            android:layout_marginLeft="3dp"
+            android:textColor="@color/check"
+            fontPath="fonts/nunito_light.ttf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="Task time"
+            tools:ignore="MissingPrefix" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_5sdp"
+            android:background="@drawable/edittext_background"
+            android:textSize="@dimen/_15sdp"
+            android:ems="10"
+            android:textColor="#000"/>
+
+        <TextView
+            android:layout_marginLeft="3dp"
+            fontPath="fonts/nunito_light.ttf"
+            android:textColor="@color/check"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="Add an event"
+            tools:ignore="MissingPrefix" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_5sdp"
+            android:background="@drawable/edittext_background"
+            android:textSize="@dimen/_15sdp"
+            android:ems="10"
+            android:textColor="#000"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnVerifyNo"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:fontFamily="@font/arvo_bold"
+            android:text="Add Task"
+            android:textColor="@color/check"
+            app:strokeColor="@color/check">
+
+        </com.google.android.material.button.MaterialButton>
+
+    </LinearLayout>
+
+
+</FrameLayout>

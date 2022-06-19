@@ -3,26 +3,40 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/FirstFragment">
-
+    app:startDestination="@id/allTaskFragment">
     <fragment
-        android:id="@+id/FirstFragment"
-        android:name="ai.ineuron.taskmanagement.auth.FirstFragment"
-        android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragment_first">
-
+        android:id="@+id/homeFragment"
+        android:name="ai.ineuron.taskmanagement.ui.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
         <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
+            android:id="@+id/action_homeFragment_to_allUserFragment"
+            app:destination="@id/allUserFragment" />
     </fragment>
     <fragment
-        android:id="@+id/SecondFragment"
-        android:name="ai.ineuron.taskmanagement.auth.SecondFragment"
-        android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_second">
-
+        android:id="@+id/allTaskFragment"
+        android:name="ai.ineuron.taskmanagement.AllTaskFragment"
+        android:label="fragment_all_task"
+        tools:layout="@layout/fragment_all_task" >
         <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
+            android:id="@+id/action_allTaskFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_allTaskFragment_to_addTaskFragment"
+            app:destination="@id/addTaskFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/addTaskFragment"
+        android:name="ai.ineuron.taskmanagement.AddTaskFragment"
+        android:label="fragment_add_task"
+        tools:layout="@layout/fragment_add_task" >
+        <action
+            android:id="@+id/action_addTaskFragment_to_allTaskFragment"
+            app:destination="@id/allTaskFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/allUserFragment"
+        android:name="ai.ineuron.taskmanagement.AllUserFragment"
+        android:label="fragment_all_user"
+        tools:layout="@layout/fragment_all_user" />
 </navigation>

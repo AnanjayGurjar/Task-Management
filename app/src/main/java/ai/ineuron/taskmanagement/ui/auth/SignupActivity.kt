@@ -1,4 +1,4 @@
-package ai.ineuron.taskmanagement.auth
+package ai.ineuron.taskmanagement.ui.auth
 
 import ai.ineuron.taskmanagement.R
 import androidx.appcompat.app.AppCompatActivity
