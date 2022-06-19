@@ -7,6 +7,8 @@ import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
+import android.media.RingtoneManager
+import android.net.Uri
 import android.os.Build
 import android.util.Log
 import android.widget.RemoteViews
@@ -60,6 +62,8 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         }
         //FLAG_ONE_SHOT : bcz we need the pending intent only once, after user clicks the notification it gets destroyed
 
+        val alarmSound: Uri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
+
         val notificationBuilder = NotificationCompat.Builder(this, CHANNEL_ID)
             .setSmallIcon(R.drawable.ic_notifications)
             .setAutoCancel(true)
@@ -72,6 +76,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
                 )
             ) //viberates for 1 sec, holds for 1 sec,viberates for 1 sec, holds for 1 sec,
             .setOnlyAlertOnce(true)
+            .setSound(alarmSound)
             .setContentIntent(pendingIntent)
 
         notificationBuilder.setContent(getRemoteView(title, message))
@@ -119,7 +124,6 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         adminChannel.enableVibration(true)
         adminChannel.setShowBadge(true) //when app has some notification, it will have a dot on app icon
         adminChannel.lockscreenVisibility = Notification.VISIBILITY_PUBLIC
-
         notificationManager.createNotificationChannel(adminChannel)
     }
 }

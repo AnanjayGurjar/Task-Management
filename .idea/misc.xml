@@ -4,7 +4,15 @@
     <option name="filePathToZoomLevelMap">
       <map>
 <<<<<<< HEAD
+<<<<<<< HEAD
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.14336372847011145" />
+=======
+        <entry key="app/src/main/res/layout/activity_home.xml" value="0.14336372847011145" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.14336372847011145" />
+        <entry key="app/src/main/res/layout/activity_otp_verification.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_splash.xml" value="0.14010416666666667" />
+        <entry key="app/src/main/res/layout/activity_user_profile.xml" value="0.25" />
+>>>>>>> f27878ac86245c218a91cb79af207936cc313fe7
         <entry key="app/src/main/res/layout/buddy_view.xml" value="0.14336372847011145" />
         <entry key="app/src/main/res/layout/dialogue_layout.xml" value="0.335" />
         <entry key="app/src/main/res/layout/fragment_buddies_list.xml" value="0.25" />
@@ -13,6 +21,7 @@
         <entry key="app/src/main/res/layout/fragment_task_view.xml" value="0.14336372847011145" />
         <entry key="app/src/main/res/layout/notification.xml" value="0.14285714285714285" />
         <entry key="app/src/main/res/layout/task_view.xml" value="0.335" />
+<<<<<<< HEAD
 =======
         <entry key="..\:/Users/dhruv/AndroidStudioProjects/Task-Management/app/src/main/res/drawable/backgroundbox.xml" value="0.161" />
         <entry key="..\:/Users/dhruv/AndroidStudioProjects/Task-Management/app/src/main/res/layout/activity_login.xml" value="0.25" />
@@ -20,6 +29,8 @@
         <entry key="..\:/Users/dhruv/AndroidStudioProjects/Task-Management/app/src/main/res/layout/activity_splash.xml" value="0.16822916666666668" />
         <entry key="..\:/Users/dhruv/AndroidStudioProjects/Task-Management/app/src/main/res/layout/activity_user_profile.xml" value="0.25" />
 >>>>>>> a7bcd1bca568cb0db776bf952e7986d541c2604e
+=======
+>>>>>>> f27878ac86245c218a91cb79af207936cc313fe7
       </map>
     </option>
   </component>

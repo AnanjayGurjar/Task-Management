@@ -31,6 +31,8 @@ class OtpVerification : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityOtpVerificationBinding.inflate(layoutInflater)
+
+
         setContentView(binding.root)
 
         phoneNo = intent.getStringExtra("PHONE").toString()
@@ -46,6 +48,7 @@ class OtpVerification : AppCompatActivity() {
                 signInWithPhoneAuthCredential(credential)
             }
         }
+
         binding.btnResendOtp.setOnClickListener {
             binding.btnResendOtp.isEnabled = false
             if (resendToken != null) {

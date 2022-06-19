@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context=".BlankFragment">
+
+  <com.google.android.material.appbar.MaterialToolbar
+      android:layout_width="match_parent"
+      android:layout_height="?attr/actionBarSize"
+      style="@style/Widget.MaterialComponents.Toolbar.Primary"
+      android:background="@color/check"
+     app:navigationIcon="@drawable/ic_baseline_menu_24"
+      app:title="Ineuron">
+
+
+
+  </com.google.android.material.appbar.MaterialToolbar>
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="vertical"
+      android:padding="@dimen/_20sdp">
+
+
+
+
+  </LinearLayout>
+
+
+
+
+
+</LinearLayout>
+<!--<LinearLayout-->
+<!--android:layout_width="wrap_content"-->
+<!--android:layout_height="wrap_content"-->
+<!--android:orientation="horizontal"-->
+<!--android:layout_marginLeft="@dimen/_3sdp">-->
+
+<!--<ImageView-->
+<!--    android:layout_width="wrap_content"-->
+<!--    android:layout_height="wrap_content"-->
+<!--    android:src="@drawable/ic_baseline_list"-->
+<!--    android:layout_marginRight="@dimen/_10sdp"-->
+
+<!--    />-->
+
+
+<!--<TextView-->
+<!--    android:layout_width="wrap_content"-->
+<!--    android:layout_height="wrap_content"-->
+<!--    android:layout_gravity="center"-->
+<!--    android:fontFamily="@font/arvo_bold"-->
+<!--    android:text="Ineuron Hackathon"-->
+<!--    android:textColor="@color/check"-->
+<!--    android:textSize="18sp" />-->
+<!--</LinearLayout>-->

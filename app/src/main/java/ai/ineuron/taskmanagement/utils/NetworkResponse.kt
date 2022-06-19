@@ -1,5 +1,5 @@
-package ai.ineuron.taskmanagement.utilshy
 
+package ai.ineuron.taskmanagement.utils
 sealed class NetworkResponse<T>(
     val data : T? = null,
     val error : String? = null
